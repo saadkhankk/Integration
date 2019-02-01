@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="a2b674de-10db-437c-8809-84341c3fea88" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Verify the fields of GenOutletMasterOut Interface" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="a2b674de-10db-437c-8809-84341c3fea88fileName">Verify-the-fields-of-GenOutletMasterOut-Interface</con:setting></con:settings><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="groovy" name="DATA UPDATION AT CSDP" id="2f083868-142a-4fc4-9e8f-f6f283f50a58"><con:settings/><con:config><script> import groovy.sql.Sql
+
+
+    try{
+
+    def dbURL="jdbc:sqlserver://128.1.101.19\\SQLSERVER2014;databaseName=EBM_NDB_1"
+    def dbUsername="sndpro"
+    def dbPassword="sqa@123"
+    def dbDriver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+
+    def db = Sql.newInstance(dbURL,dbUsername,dbPassword,dbDriver)
+
+    def q1 = "SELECT TOP (1) NAME,DISTRIBUTOR FROM POP"
+
+
+    db.eachRow(q1){row ->
+       log.info "${row.name}"
+       log.info "${row.DISTRIBUTOR}"
+
+       db.execute("UPDATE TOP (1) POP  SET COMPANY=COMPANY WHERE DISTRIBUTOR='100523' ");
+      
+       db.execute("UPDATE TOP (1) POP  SET COMPANY=COMPANY WHERE DISTRIBUTOR='100523' ");
+    }
+    
+
+
+   }catch (Exception e){
+       log.info "Some db error"
+       log.info e.getMessage()
+
+   }finally{
+
+db.close()
+   }</script></con:config></con:testStep><con:testStep type="restrequest" name="Request 1" id="987cc1f0-a710-4aac-a15c-a414b4a7648b"><con:settings/><con:config service="http://ws043" resourcePath="/EBM_Integration/ebm/GenOutletMasterOut/1/01/SND/100523" methodName="100523" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Request 1" id="723d6a80-b848-4c0b-ad48-4c013857ffc6" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://ws043</con:endpoint><con:request/><con:originalUri>http://ws043/EBM_Integration/ebm/GenOutletMasterOut/1/01/SND/100523</con:originalUri><con:assertion type="Simple Contains" id="bca2d799-f9ff-4fcf-a591-a9786dd1db9a" name="Contains"><con:configuration><token>SalesOrganization</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="4bf73126-ba68-4475-9ba4-303396326503" name="Contains 2"><con:configuration><token>ShopCode</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="689af8ee-5b64-4935-90c1-48b135345afd" name="Contains 3"><con:configuration><token>ShopName</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="586a6135-2453-4eca-a2b3-96d3e996d9a8" name="Contains 4"><con:configuration><token>City</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f1284ff9-5541-4f7f-860d-80de8a638467" name="Contains 5"><con:configuration><token>CustomerNumberSND</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3fb7d895-f892-40dc-ba82-35b79d40cbcf" name="Contains 6"><con:configuration><token>CustomerNumberSAP</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="595984ab-efc5-4885-a11a-2ef3c69c7448" name="Contains 7"><con:configuration><token>ModificationDate</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="92ae61f1-937c-4804-bcb2-a8b438e9c68b" name="Contains 8"><con:configuration><token>CreationDate</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="1b610e3f-2c3d-4e01-9e99-34ed01fe16ff" name="Contains 9"><con:configuration/></con:assertion><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase>

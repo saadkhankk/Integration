@@ -1,0 +1,11 @@
+http%3A%2F%2Fws043\100523.xml
+Field-level\Validate--%3CSalesOrganization%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CShopCode%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CShopName%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CCity%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CCustomerNumberSND%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CCustomerNumberSAP%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CCreationDate%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Field-level\Validate--%3CModificationDate%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface.xml
+Business-Flow\Verify-the-fields-of-GenOutletMasterOut-Interface.xml
+Business-Flow\Verify-the-field-mapping-to-CSDP-colum-of-GenOutletMasterOut-Interface.xml

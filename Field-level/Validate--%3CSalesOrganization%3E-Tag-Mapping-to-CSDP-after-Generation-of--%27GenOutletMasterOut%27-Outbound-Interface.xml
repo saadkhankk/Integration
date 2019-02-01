@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="669626f3-3b89-4c04-9c7e-85addbc9a494" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="Validate  &lt;SalesOrganization> Tag Mapping to CSDP after Generation of  'GenOutletMasterOut' Outbound Interface" searchProperties="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword="" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="669626f3-3b89-4c04-9c7e-85addbc9a494fileName">Validate--%3CSalesOrganization%3E-Tag-Mapping-to-CSDP-after-Generation-of--%27GenOutletMasterOut%27-Outbound-Interface</con:setting></con:settings><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="groovy" name="DATA UPDATION AT CSDP" id="de299208-27a1-4b67-bd6e-27d046bf4f89"><con:settings/><con:config><script> import groovy.sql.Sql
+
+
+    try{
+
+    def dbURL="jdbc:sqlserver://128.1.101.19\\SQLSERVER2014;databaseName=EBM_NDB_1"
+    def dbUsername="sndpro"
+    def dbPassword="sqa@123"
+    def dbDriver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+
+    def db = Sql.newInstance(dbURL,dbUsername,dbPassword,dbDriver)
+
+    def q1 = "SELECT TOP (1) NAME,DISTRIBUTOR FROM POP"
+
+
+    db.eachRow(q1){row ->
+       log.info "${row.name}"
+       log.info "${row.DISTRIBUTOR}"
+
+       db.execute("UPDATE TOP (1) POP  SET COMPANY=COMPANY WHERE DISTRIBUTOR='100523' ");
+      
+       db.execute("UPDATE TOP (1) POP  SET COMPANY=COMPANY WHERE DISTRIBUTOR='100523' ");
+    }
+    
+
+
+   }catch (Exception e){
+       log.info "Some db error"
+       log.info e.getMessage()
+
+   }finally{
+
+db.close()
+   }</script></con:config></con:testStep><con:testStep type="restrequest" name="Request1" id="e6a10035-535b-47ea-b77d-fa764b469f44"><con:settings/><con:config service="http://ws043" resourcePath="/EBM_Integration/ebm/GenOutletMasterOut/1/01/SND/100523" methodName="100523" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Request1" id="723d6a80-b848-4c0b-ad48-4c013857ffc6" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://ws043</con:endpoint><con:request/><con:originalUri>http://ws043/EBM_Integration/ebm/GenOutletMasterOut/1/01/SND/100523</con:originalUri><con:assertion type="Simple Contains" id="bca2d799-f9ff-4fcf-a591-a9786dd1db9a" name="Contains"><con:configuration><token>SalesOrganization</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="4bf73126-ba68-4475-9ba4-303396326503" name="Contains 2"><con:configuration><token>ShopCode</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="689af8ee-5b64-4935-90c1-48b135345afd" name="Contains 3"><con:configuration><token>ShopName</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="586a6135-2453-4eca-a2b3-96d3e996d9a8" name="Contains 4"><con:configuration><token>City</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f1284ff9-5541-4f7f-860d-80de8a638467" name="Contains 5"><con:configuration><token>CustomerNumberSND</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3fb7d895-f892-40dc-ba82-35b79d40cbcf" name="Contains 6"><con:configuration><token>CustomerNumberSAP</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="595984ab-efc5-4885-a11a-2ef3c69c7448" name="Contains 7"><con:configuration><token>ModificationDate</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="92ae61f1-937c-4804-bcb2-a8b438e9c68b" name="Contains 8"><con:configuration><token>CreationDate</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="1b610e3f-2c3d-4e01-9e99-34ed01fe16ff" name="Contains 9"><con:configuration/></con:assertion><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:testStep type="datasource" name="POP.SALE_ORGANIZATION" id="05d2ca93-fd49-4283-804f-029f790b4c9a"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.teststeps.datasource.DataSourceContainer@prepared-properties">&lt;xml-fragment/></con:setting></con:settings><con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:dataSource type="Data Connection"><con:configuration><Connection>EBM_DATABASE1( Default environment )</Connection><query>Select Top (1) D.SALES_ORGANIZATION as D_SALES_ORGANIZATION
+From POP P Inner Join
+  DISTRIBUTOR D On D.COMPANY = P.COMPANY And D.DISTRIBUTOR = P.DISTRIBUTOR
+Order By P.IROW_VER Desc</query><fetchSize>100</fetchSize><stored-procedure>false</stored-procedure></con:configuration></con:dataSource><con:shared>true</con:shared><con:restartShared>true</con:restartShared><con:property>D_SALES_ORGANIZATION</con:property><con:completeLastOperation>true</con:completeLastOperation><con:restartOnRun>true</con:restartOnRun></con:config></con:testStep><con:testStep type="assertionteststep" name="Assertion" id="3dac3210-b655-46b1-b589-ea880a2b12b5"><con:settings/><con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:entry><con:id>a1ba7a18-270b-48a5-8672-e532b853acfe</con:id><con:isGroup>false</con:isGroup><con:sourceId>e6a10035-535b-47ea-b77d-fa764b469f44</con:sourceId><con:propertyName>Response</con:propertyName><con:assertion type="JsonPath Match" name="SalesOrganization" id="e715156a-e13c-4c7d-98ec-dd343787b50f"><con:configuration><path>$[0]['SalesOrganization']</path><content>${POP.SALE_ORGANIZATION#D_SALES_ORGANIZATION}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion></con:entry></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase>
