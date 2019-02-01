@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:WsdlInterface" id="d5a75c89-fb0a-47f1-b014-1ebb5bb3ed5e" wsaVersion="NONE" name="ProductMaster_ProductMasterBinding" type="wsdl" bindingName="{http://ctc.centegy.com/services/ProductMaster}ProductMaster_ProductMasterBinding" soapVersion="1_1" anonymous="optional" definition="http://db19/ULINBOUNDService/WCFInbound.ProductMaster.ProductMaster.svc?singleWsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="d5a75c89-fb0a-47f1-b014-1ebb5bb3ed5efileName">ProductMaster_ProductMasterBinding</con:setting></con:settings><con:definitionCache type="TEXT" rootPart="http://db19/ULINBOUNDService/WCFInbound.ProductMaster.ProductMaster.svc?singleWsdl"><con:part><con:url>http://db19/ULINBOUNDService/WCFInbound.ProductMaster.ProductMaster.svc?singleWsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ProductMasterBinding" targetNamespace="http://ctc.centegy.com/services/ProductMaster" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://ctc.centegy.com/services/ProductMaster" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://ctc.centegy.com/services/ProductMaster" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ProductMaster_Inbound">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="SetProductMaster" nillable="true" type="tns:SetProductMaster"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="SetProductMaster">
+        <xs:sequence>
+          <xs:element name="ProductMasterRequest" nillable="true" type="tns:SetProductMaster_Request"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SetProductMaster" nillable="true" type="tns:SetProductMaster"/>
+      <xs:complexType name="SetProductMaster_Request">
+        <xs:sequence>
+          <xs:element name="MessageID" nillable="true" type="xs:string"/>
+          <xs:element name="ChunkSequenceNumber" nillable="true" type="xs:string"/>
+          <xs:element name="ProductList" nillable="true" type="tns:ArrayOfProduct"/>
+          <xs:element name="CountryCode" nillable="true" type="xs:string"/>
+          <xs:element name="CompanyCode" nillable="true" type="xs:string"/>
+          <xs:element name="CategoryCode" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SetProductMaster_Request" nillable="true" type="tns:SetProductMaster_Request"/>
+      <xs:complexType name="ArrayOfProduct">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct"/>
+      <xs:complexType name="Product">
+        <xs:sequence>
+          <xs:element name="CompanyCode" nillable="true" type="xs:string"/>
+          <xs:element name="ProductCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="GrossWeightCS" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="GrossWeightDZ" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="GrossWeightPC" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="NetWeightPC" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="ProductLength" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="ProductWidth" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="ProductHeight" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="UOM1" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="UOM2" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="UOM3" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="UnitConversion1" type="xs:int"/>
+          <xs:element minOccurs="0" name="UnitConversion2" type="xs:int"/>
+          <xs:element minOccurs="0" name="PalletBarcode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="CaseBarcode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="MultipackBarcode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="UnitBarcode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="PRODHIER" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="ArticleType" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SalesOrganization" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="LiterNetWeightPC" type="xs:decimal"/>
+          <xs:element minOccurs="0" name="DimensionUoM" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="WeightUoM" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="SequenceNumber" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Product" nillable="true" type="tns:Product"/>
+      <xs:element name="ProductMaster_InboundResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ProductMaster_InboundResult" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+      <xs:element name="anyType" nillable="true" type="xs:anyType"/>
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI"/>
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary"/>
+      <xs:element name="boolean" nillable="true" type="xs:boolean"/>
+      <xs:element name="byte" nillable="true" type="xs:byte"/>
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime"/>
+      <xs:element name="decimal" nillable="true" type="xs:decimal"/>
+      <xs:element name="double" nillable="true" type="xs:double"/>
+      <xs:element name="float" nillable="true" type="xs:float"/>
+      <xs:element name="int" nillable="true" type="xs:int"/>
+      <xs:element name="long" nillable="true" type="xs:long"/>
+      <xs:element name="QName" nillable="true" type="xs:QName"/>
+      <xs:element name="short" nillable="true" type="xs:short"/>
+      <xs:element name="string" nillable="true" type="xs:string"/>
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte"/>
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt"/>
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong"/>
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort"/>
+      <xs:element name="char" nillable="true" type="tns:char"/>
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int"/>
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration"/>
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S"/>
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid"/>
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+      <xs:attribute name="Ref" type="xs:IDREF"/>
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFInbound.Exception" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/WCFInbound.Exception">
+      <xs:complexType name="ISException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="InnerException" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="StackTrace" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ISException" nillable="true" type="tns:ISException"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ProductMasterBinding_ProductMaster_Inbound_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductMaster_Inbound"/>
+  </wsdl:message>
+  <wsdl:message name="ProductMasterBinding_ProductMaster_Inbound_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductMaster_InboundResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ProductMasterBinding_ProductMaster_Inbound_ISExceptionFault_FaultMessage">
+    <wsdl:part name="detail" element="q1:ISException" xmlns:q1="http://schemas.datacontract.org/2004/07/WCFInbound.Exception"/>
+  </wsdl:message>
+  <wsdl:portType name="ProductMasterBinding">
+    <wsdl:operation name="ProductMaster_Inbound">
+      <wsdl:input wsaw:Action="http://ctc.centegy.com/services/ProductMaster/ProductMasterBinding/ProductMaster_Inbound" message="tns:ProductMasterBinding_ProductMaster_Inbound_InputMessage"/>
+      <wsdl:output wsaw:Action="http://ctc.centegy.com/services/ProductMaster/ProductMasterBinding/ProductMaster_InboundResponse" message="tns:ProductMasterBinding_ProductMaster_Inbound_OutputMessage"/>
+      <wsdl:fault wsaw:Action="http://ctc.centegy.com/services/ProductMaster/ProductMasterBinding/ProductMaster_InboundISExceptionFault" name="ISExceptionFault" message="tns:ProductMasterBinding_ProductMaster_Inbound_ISExceptionFault_FaultMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductMaster_ProductMasterBinding" type="tns:ProductMasterBinding">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProductMaster_Inbound">
+      <soap:operation soapAction="http://ctc.centegy.com/services/ProductMaster/ProductMasterBinding/ProductMaster_Inbound" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ISExceptionFault">
+        <soap:fault use="literal" name="ISExceptionFault" namespace=""/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductMasterBinding">
+    <wsdl:port name="ProductMaster_ProductMasterBinding" binding="tns:ProductMaster_ProductMasterBinding">
+      <soap:address location="http://db19/ULINBOUNDService/WCFInbound.ProductMaster.ProductMaster.svc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://db19/ULINBOUNDService/WCFInbound.ProductMaster.ProductMaster.svc</con:endpoint></con:endpoints></con:interface>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="8f4bc8c0-98e3-4e90-afa4-ae7de1b31f72" discardOkResults="true" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="ProductMaster_Inbound TestCase" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="8f4bc8c0-98e3-4e90-afa4-ae7de1b31f72fileName">ProductMaster_Inbound-TestCase</con:setting></con:settings><con:savedRecentRuns>1</con:savedRecentRuns><con:testStep type="request" name="SOAP Request" id="5fe1cfd2-cfa9-4250-b5ad-5e509b5a396c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ProductMaster_ProductMasterBinding</con:interface><con:operation>ProductMaster_Inbound</con:operation><con:request name="SOAP Request" id="66e1e018-5f36-4bfb-8490-0b2ca5649b6e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://db19/ULINBOUNDService/WCFInbound.ProductMaster.ProductMaster.svc</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://ctc.centegy.com/services/ProductMaster">
+   <soapenv:Header/>
+   <soapenv:Body>
+<prod:ProductMaster_Inbound>
+<prod:SetProductMaster>
+  <prod:ProductMasterRequest>
+    <prod:MessageID>005056A023FB1EE8AB8B1EF16C85D423</prod:MessageID>
+    <prod:ChunkSequenceNumber>1</prod:ChunkSequenceNumber>
+    <prod:ProductList>
+      <prod:Product>
+        <prod:CompanyCode>2408</prod:CompanyCode>
+        <prod:ProductCode>AuotSKU</prod:ProductCode>
+        <prod:ProductDescription>LIPTON YL TB ENV ID FS SIP2 12X(100X2G)</prod:ProductDescription>
+        <prod:GrossWeightCS>3960.000</prod:GrossWeightCS>
+        <prod:GrossWeightDZ>0.000</prod:GrossWeightDZ>
+        <prod:GrossWeightPC>313.500</prod:GrossWeightPC>
+        <prod:NetWeightPC>200.000</prod:NetWeightPC>
+        <prod:ProductLength>40.600</prod:ProductLength>
+        <prod:ProductWidth>36.100</prod:ProductWidth>
+        <prod:ProductHeight>20.400</prod:ProductHeight>
+        <prod:UOM1>CS</prod:UOM1>
+        <prod:UOM2/>
+        <prod:UOM3>PC</prod:UOM3>
+        <prod:UnitConversion1>12</prod:UnitConversion1>
+        <prod:UnitConversion2>0</prod:UnitConversion2>
+        <prod:PalletBarcode/>
+        <prod:CaseBarcode>8999999098858</prod:CaseBarcode>
+        <prod:MultipackBarcode/>
+        <prod:UnitBarcode>8999999041670</prod:UnitBarcode>
+        <prod:ShortDescription/>
+        <prod:PRODHIER>32061139434011571</prod:PRODHIER>
+        <prod:ArticleType>TRAD</prod:ArticleType>
+        <prod:SalesOrganization>9002</prod:SalesOrganization>
+        <prod:LiterNetWeightPC>0.0</prod:LiterNetWeightPC>
+        <prod:DimensionUoM>CM</prod:DimensionUoM>
+        <prod:WeightUoM>G</prod:WeightUoM>
+      </prod:Product>
+    </prod:ProductList>
+     <prod:CountryCode>ID</prod:CountryCode>
+    <prod:CompanyCode>2408</prod:CompanyCode>
+    <prod:CategoryCode>HPC</prod:CategoryCode>
+</prod:ProductMasterRequest>
+</prod:SetProductMaster>      	
+      </prod:ProductMaster_Inbound>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="41b384d0-9977-40a2-8ad1-81961ff0ab02"/><con:credentials><con:selectedAuthProfile>Inherit From Parent</con:selectedAuthProfile><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="datasource" name="database" id="a2854ab3-81ec-4330-8f20-6cba71e56e7e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.teststeps.datasource.DataSourceContainer@prepared-properties">&lt;xml-fragment/></con:setting></con:settings><con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:dataSource type="Data Connection"><con:configuration><Connection>PI_INTEGRATOR( Default environment )</Connection><query>Select Top (1) PI_EXECUTION_QUEUE.REF_MSG_ID as PI_EXECUTION_QUEUE_REF_MSG_ID
+From PI_EXECUTION_QUEUE
+Where PI_EXECUTION_QUEUE.TASK_ID = 'ProductMaster' And
+  PI_EXECUTION_QUEUE.STATUS = 'C'
+Order By PI_EXECUTION_QUEUE.EQU_ID Desc</query><fetchSize>100</fetchSize><stored-procedure>false</stored-procedure></con:configuration></con:dataSource><con:shared>true</con:shared><con:restartShared>true</con:restartShared><con:property>PI_EXECUTION_QUEUE_REF_MSG_ID</con:property><con:completeLastOperation>true</con:completeLastOperation><con:restartOnRun>true</con:restartOnRun></con:config></con:testStep><con:testStep type="assertionteststep" name="Assertion at PI_integrator" id="8b32cf47-05ba-4b8f-bde4-6819a449e30a"><con:settings/><con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:entry><con:id>2b574052-8da4-48ac-8406-c15c85439273</con:id><con:isGroup>false</con:isGroup><con:sourceId>5fe1cfd2-cfa9-4250-b5ad-5e509b5a396c</con:sourceId><con:propertyName>Request</con:propertyName><con:assertion type="XPath Match" name="XPath Match" id="07d7a831-da89-48ea-8863-9a953e4607ea"><con:configuration><path>declare namespace prod='http://ctc.centegy.com/services/ProductMaster';
+//prod:ProductMaster_Inbound[1]/prod:SetProductMaster[1]/prod:ProductMasterRequest[1]/prod:MessageID[1]</path><content>${database#PI_EXECUTION_QUEUE_REF_MSG_ID}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion></con:entry></con:config></con:testStep><con:testStep type="groovy" name="UPDATE QUEUE_FILTER" id="8f2ce1a4-a7d6-42b8-a538-79fe7c51c04a"><con:settings/><con:config><script> import groovy.sql.Sql
+
+
+    try{
+
+    def dbURL="jdbc:sqlserver://128.1.101.19\\SQLSERVER2014;databaseName=PI_INTEGRATOR"
+    def dbUsername="sndpro"
+    def dbPassword="sqa@123"
+    def dbDriver="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+
+    def db = Sql.newInstance(dbURL,dbUsername,dbPassword,dbDriver)
+
+
+
+       db.execute("UPDATE QUEUE_FILTERS SET LAST_UNLOCK= NULL  WHERE FILTER_ID='3' ");
+
+    
+
+
+   }catch (Exception e){
+       log.info "Some db error"
+       log.info e.getMessage()
+
+   }finally{
+
+db.close()
+   }</script></con:config></con:testStep><con:testStep type="delay" name="Waiting for Service" id="52877209-9bf3-41be-8c62-2f9b71ed65bb"><con:settings/><con:config><delay>180000</delay></con:config></con:testStep><con:testStep type="datasource" name="VERIFYING STATUS S OR F" id="6c19d842-682d-477d-894f-db99a442fc56"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.teststeps.datasource.DataSourceContainer@prepared-properties">&lt;xml-fragment/></con:setting></con:settings><con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:dataSource type="Data Connection"><con:configuration><Connection>PI_INTEGRATOR( Default environment )</Connection><query>Select Top (1) PI_EXECUTION_QUEUE.STATUS as PI_EXECUTION_QUEUE_STATUS
+From PI_EXECUTION_QUEUE
+Where PI_EXECUTION_QUEUE.TASK_ID = 'ProductMaster' 
+Order By PI_EXECUTION_QUEUE.EQU_ID Desc</query><fetchSize>100</fetchSize><stored-procedure>false</stored-procedure></con:configuration></con:dataSource><con:shared>true</con:shared><con:restartShared>true</con:restartShared><con:property>PI_EXECUTION_QUEUE_STATUS</con:property><con:completeLastOperation>true</con:completeLastOperation><con:restartOnRun>true</con:restartOnRun></con:config></con:testStep><con:testStep type="assertionteststep" name="VERIFYING STATUS" id="fd6d7dc8-8b53-490f-9721-ed7b2e6af2af"><con:settings/><con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:entry><con:id>dde3754d-7087-4a1c-a6b0-2b3610a51146</con:id><con:isGroup>false</con:isGroup><con:sourceId>6c19d842-682d-477d-894f-db99a442fc56</con:sourceId><con:propertyName>PI_EXECUTION_QUEUE_STATUS</con:propertyName><con:assertion type="Simple Equals" name="Equals" id="3381f859-83a9-46cf-bc9c-dbf8841c4810"><con:configuration><patternText>S</patternText><caseSensitive>true</caseSensitive></con:configuration></con:assertion></con:entry></con:config></con:testStep><con:testStep type="datasource" name="Verify sku at CSDP" id="c2e9c75a-71d1-44fb-8e3c-f45ae23085ea"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.teststeps.datasource.DataSourceContainer@prepared-properties">&lt;xml-fragment/></con:setting></con:settings><con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:dataSource type="Data Connection"><con:configuration><Connection>CSDP Database( Default environment )</Connection><query>SELECT TOP 1 SKU FROM SKU ORDER BY IROW_VER DESC</query><fetchSize/><stored-procedure>false</stored-procedure></con:configuration></con:dataSource><con:shared>true</con:shared><con:restartShared>true</con:restartShared><con:property>SKU</con:property><con:completeLastOperation>true</con:completeLastOperation><con:restartOnRun>true</con:restartOnRun></con:config></con:testStep><con:testStep type="assertionteststep" name="Assertiona of SKU with XML request" id="09f46102-4a53-49de-a340-2070d93c8594"><con:settings/><con:config xsi:type="con:AssertionTestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:entry><con:id>e1b45447-6d2e-4330-a330-0820f6a26bdf</con:id><con:isGroup>false</con:isGroup><con:sourceId>5fe1cfd2-cfa9-4250-b5ad-5e509b5a396c</con:sourceId><con:propertyName>Request</con:propertyName><con:assertion type="XPath Match" name="XPath Match" id="d9c3c46f-0b03-49d1-8ebd-b6a822d4cc6b"><con:configuration><path>declare namespace prod='http://ctc.centegy.com/services/ProductMaster';
+//prod:ProductMaster_Inbound[1]/prod:SetProductMaster[1]/prod:ProductMasterRequest[1]/prod:ProductList[1]/prod:Product[1]/prod:ProductCode[1]</path><content>${Verify sku at CSDP#SKU}</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion></con:entry></con:config></con:testStep><con:properties/><con:reportParameters/><con:breakPoints><con:testStepId>a2854ab3-81ec-4330-8f20-6cba71e56e7e</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>52877209-9bf3-41be-8c62-2f9b71ed65bb</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>8f2ce1a4-a7d6-42b8-a538-79fe7c51c04a</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints><con:breakPoints><con:testStepId>c2e9c75a-71d1-44fb-8e3c-f45ae23085ea</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints></con:testCase>
